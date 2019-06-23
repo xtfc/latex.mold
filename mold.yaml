@@ -1,0 +1,22 @@
+
+types:
+  sh:
+    command: ["sh", "?"]
+    extensions: ["sh"]
+
+recipes:
+  build:
+    help: "Build the pdf"
+    type: "sh"
+
+  watch:
+    help: "Rebuild when files are changed"
+    type: "sh"
+
+  clean:
+    help: "Clean artifacts"
+    type: "sh"
+
+  local-changes:
+    help: "Commit local changes quickly"
+    type: "sh"
