@@ -20,3 +20,7 @@ recipes:
   local-changes:
     help: "Commit local changes quickly"
     type: "sh"
+
+  mk-makefile:
+    help: "Create a Makefile that does build, watch, and clean"
+    type: "sh"
