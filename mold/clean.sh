@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-latexmk -pdf -pvc -c paper.tex
+latexmk -pdf -pvc -c $PAPER
