@@ -7,14 +7,17 @@ types:
 recipes:
   build:
     help: "Build the pdf"
+    script: "latexmk -file-line-error -pdf $PAPER"
     type: "sh"
 
   watch:
     help: "Rebuild when files are changed"
+    script: "latexmk -halt-on-error -file-line-error -pdf -pvc $PAPER"
     type: "sh"
 
   clean:
     help: "Clean artifacts"
+    script: "latexmk -pdf -pvc -c $PAPER"
     type: "sh"
 
   local-changes:
