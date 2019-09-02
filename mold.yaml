@@ -3,6 +3,9 @@ types:
   sh:
     command: ["sh", "?"]
     extensions: ["sh"]
+  py:
+    command: ["python3", "?"]
+    extensions: ["py"]
 
 recipes:
   build:
@@ -27,3 +30,7 @@ recipes:
   mk-makefile:
     help: "Create a Makefile that does build, watch, and clean"
     type: "sh"
+
+  unused-macros:
+    help: "Find unused macros"
+    type: "py"
