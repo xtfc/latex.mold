@@ -1,5 +1,6 @@
+version: "0.5"
 
-types:
+runtimes:
   sh:
     command: ["sh", "?"]
     extensions: ["sh"]
