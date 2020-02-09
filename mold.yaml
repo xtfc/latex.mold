@@ -12,26 +12,26 @@ recipes:
   build:
     help: "Build the pdf"
     script: "latexmk -file-line-error -pdf $PAPER"
-    type: "sh"
+    runtime: "sh"
 
   watch:
     help: "Rebuild when files are changed"
     script: "latexmk -halt-on-error -file-line-error -pdf -pvc $PAPER"
-    type: "sh"
+    runtime: "sh"
 
   clean:
     help: "Clean artifacts"
     script: "latexmk -pdf -pvc -c $PAPER"
-    type: "sh"
+    runtime: "sh"
 
   local-changes:
     help: "Commit local changes quickly"
-    type: "sh"
+    runtime: "sh"
 
   mk-makefile:
     help: "Create a Makefile that does build, watch, and clean"
-    type: "sh"
+    runtime: "sh"
 
   unused-macros:
     help: "Find unused macros"
-    type: "py"
+    runtime: "py"
