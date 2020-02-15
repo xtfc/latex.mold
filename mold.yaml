@@ -1,37 +1,40 @@
-version: "0.5"
-
-runtimes:
-  sh:
-    command: ["sh", "?"]
-    extensions: ["sh"]
-  py:
-    command: ["python3", "?"]
-    extensions: ["py"]
+version: "0.6"
 
 recipes:
   build:
     help: "Build the pdf"
     script: "latexmk -file-line-error -pdf $PAPER"
-    runtime: "sh"
+    command: "sh $MOLD_SCRIPT"
 
   watch:
     help: "Rebuild when files are changed"
     script: "latexmk -halt-on-error -file-line-error -pdf -pvc $PAPER"
-    runtime: "sh"
+    command: "sh $MOLD_SCRIPT"
 
   clean:
     help: "Clean artifacts"
     script: "latexmk -pdf -pvc -c $PAPER"
-    runtime: "sh"
+    command: "sh $MOLD_SCRIPT"
 
   local-changes:
     help: "Commit local changes quickly"
-    runtime: "sh"
+    script: "git add -p && git commit -m 'Local changes' && git push origin master"
+    command: "sh $MOLD_SCRIPT"
 
   mk-makefile:
     help: "Create a Makefile that does build, watch, and clean"
-    runtime: "sh"
+    script: |
+      cat >Makefile <<EOF
+      .PHONY: all
+      all:
+        latexmk -file-line-error -pdf $PAPER
 
-  unused-macros:
-    help: "Find unused macros"
-    runtime: "py"
+      .PHONY: watch
+      watch:
+        latexmk -halt-on-error -file-line-error -pdf -pvc $PAPER
+
+      .PHONY: clean
+      clean:
+        latexmk -pdf -pvc -c $PAPER
+      EOF
+    command: "sh $MOLD_SCRIPT"
